@@ -1,0 +1,116 @@
+:root {
+    --primary: #6366f1;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --dot-inactive: #cbd5e1;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* основная оболочка слайдера */
+.slider-wrapper {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    width: 300px; /* компактный размер (примерно 1/3 от 1024px) */
+    transition: transform 0.3s ease;
+}
+
+.slider-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+/* контейнер для изображения */
+.ad-viewport {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--card);
+    margin: 0 auto;
+}
+
+/* стилизация самого изображения */
+#ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0;
+    display: block;
+}
+
+/* полоса прогресса (таймер) */
+.loader-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background: var(--primary);
+    width: 0%;
+    z-index: 10;
+    border-radius: 0 2px 2px 0;
+}
+
+/* панель управления (кнопки и точки) */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 0 4px;
+}
+
+.nav-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
+}
+
+.nav-btn:hover {
+    background: #4f46e5;
+    transform: scale(1.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* индикаторы текущего слайда */
+.dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dot-inactive);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dot.active {
+    background: var(--primary);
+    transform: scale(1.4);
+}
